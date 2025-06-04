@@ -1,4 +1,8 @@
 const express = require("express");
+const router = express.Router();
+const userRoutes = require("./routes/users");
+
+router.use("/users", userRoutes);
 
 const mongodb = require("./data/database");
 const app = express();
