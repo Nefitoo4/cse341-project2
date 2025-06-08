@@ -1,0 +1,30 @@
+// LOCALHOST 
+### Get all users
+GET http://localhost:3001/users
+
+### Get contact by ID
+GET http://localhost:3001/683d1a66f0f3365464d4ef93
+
+### Create contact
+POST http://localhost:3001/users HTTP/1.1
+Content-type: application/json
+
+{
+    "firstName": "John",
+    "lastName": "Doe",
+    "email": "john_doe@test.com",
+    "favoriteColor": "blue",
+    "birthday": "06/19/2000"
+}
+
+### PUT contact
+PUT http://localhost:3001/users/683d1a66f0f3365464d4ef93 HTTP/1.1
+content-type: application/json
+
+{
+    "firstName": "Sarah",
+    "lastName": "Doe",
+    "email": "test@test.com",
+    "favoriteColor": "red",
+    "birthday": "12/12/2000"
+}

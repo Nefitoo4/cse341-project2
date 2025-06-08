@@ -1,14 +1,19 @@
 const express = require("express");
-const router = express.Router();
-const userRoutes = require("./routes/users");
-
-router.use("/users", userRoutes);
+const bodyParser = require("body-parser");
 
 const mongodb = require("./data/database");
 const app = express();
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3001;
 
+app.use(bodyParser.json());
+app.use((req, res, next) => {
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PUT, DELETE, OPTIONS"
+  );
+  next();
+});
 app.use("/", require("./routes"));
 
 mongodb.initDb((err) => {
@@ -16,7 +21,7 @@ mongodb.initDb((err) => {
     console.log(err);
   } else {
     app.listen(port, () => {
-      console.log(`Running on port ${port}`);
+      console.log(`Database is listening and node Running on port ${port}`);
     });
   }
 });
